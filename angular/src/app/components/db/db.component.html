@@ -1,0 +1,12 @@
+<dx-button
+  id="fill-db"
+  text="Fill DB"
+  (onClick)="fillDB()"
+  [disabled]="!isConnected()"
+></dx-button>
+<dx-button
+  id="delete-db"
+  text="Delete DB"
+  (onClick)="resetDB()"
+  [disabled]="!isConnected()"
+></dx-button>

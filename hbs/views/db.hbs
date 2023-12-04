@@ -1,0 +1,72 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+      crossorigin="anonymous"
+    />
+    <title>MyFishingDiary</title>
+  </head>
+  <body>
+    <div class="app">
+      <header>
+        <nav>
+          <div class="logo">
+            <a href="/"><i class="fas fa-fish"></i> MyFishingDiary</a>
+          </div>
+          <ul class="nav-links">
+            <li>
+              <a href="/"><i class="fas fa-home"></i> Home</a>
+            </li>
+            <li>
+              <a href="/trips"><i class="fas fa-map-marked-alt"></i>
+                Trips</a>
+            </li>
+            <li>
+              <a href="/register"><i class="fas fa-user"></i>
+                Login/Register</a>
+            </li>
+            <li>
+              <a href="/db"><i class="fas fa-database"></i>
+                DB</a>
+            </li>
+          </ul>
+          <a
+            style="
+              text-decoration: none;
+              color: white;
+              display: flex;
+              align-items: center;
+            "
+            href="/profile"
+          ><i class="fas fa-user"></i> User</a>
+        </nav>
+      </header>
+
+      <main>
+        <div>
+          <button
+            onclick="addInitialDB()"
+            type="button"
+            class="btn btn-success btn-sm"
+          ><span class="fas fa-file-import"></span>&nbsp;Add initial data
+          </button>
+        </div>
+        <hr />
+        <div>
+          <button
+            onclick="deleteData()"
+            type="button"
+            class="btn btn-danger btn-sm"
+          ><span class="fas fa-eraser"></span>&nbsp;Deleta data
+          </button>
+        </div>
+      </main>
+    </div>
+    <script src="javascript/script.js"></script>
+  </body>
+</html>

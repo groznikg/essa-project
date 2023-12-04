@@ -1,0 +1,77 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+      crossorigin="anonymous"
+    />
+    <title>Trip Details</title>
+  </head>
+  <body>
+    <div class="app">
+      <header>
+        <nav>
+          <div class="logo">
+            <a href="/"><i class="fas fa-fish"></i> MyFishingDiary</a>
+          </div>
+          <ul class="nav-links">
+            <li>
+              <a href="/"><i class="fas fa-home"></i> Home</a>
+            </li>
+            <li>
+              <a href="/trips"><i class="fas fa-map-marked-alt"></i>
+                Trips</a>
+            </li>
+            <li>
+              <a href="/register"><i class="fas fa-user"></i>
+                Login/Register</a>
+            </li><li>
+              <a href="/db"><i class="fas fa-database"></i>
+                DB</a>
+            </li>
+          </ul>
+          <a
+            style="
+              text-decoration: none;
+              color: white;
+              display: flex;
+              align-items: center;
+            "
+            href="/profile"
+          ><i class="fas fa-user"></i> User</a>
+        </nav>
+      </header>
+
+      <main style="display: flex; flex-direction: row">
+        <section class="trip-details">
+          <h1>Trip Details</h1>
+          <div class="trip-info">
+            <p><strong>Trip Name:</strong> Trip 1</p>
+            <p><strong>Date:</strong> January 15, 2023</p>
+            <p><strong>Location:</strong> Lake Serenity</p>
+            <a class="button">Edit</a>
+          </div>
+        </section>
+        <div style="width: 15px"></div>
+        <section class="trip-details">
+          <h1>Trip Map</h1>
+          <div class="trip-info">
+            <p>Here will be a map of the location of the trip</p>
+          </div>
+        </section>
+      </main>
+      <section class="trip-details" style="margin: 20px">
+        <h1>Comments</h1>
+        <div class="trip-info">
+          <p>Comment 1</p>
+          <p>Comment 2</p>
+          <p>Comment 3</p>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

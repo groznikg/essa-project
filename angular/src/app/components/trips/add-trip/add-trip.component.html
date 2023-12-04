@@ -1,0 +1,46 @@
+<dx-popup
+  [visible]="true"
+  [title]="'Add a trip'"
+  (onHiding)="closedPopup()"
+  [height]="'auto'"
+  [width]="500"
+>
+  <div *dxTemplate="let data of 'content'">
+    <form [formGroup]="form">
+      <div>Name</div>
+      <dx-text-box [required]="true" formControlName="name"></dx-text-box>
+      <div>Time</div>
+      <dx-date-box formControlName="time"></dx-date-box>
+      <div>Type</div>
+      <dx-text-box [required]="true" formControlName="type"></dx-text-box>
+      <div>Description</div>
+      <dx-text-area formControlName="description"></dx-text-area>
+      <div>Coordinates</div>
+      <div style="display: flex; align-items: center">
+        <div style="margin-right: 5px">lat:</div>
+        <dx-number-box
+          formControlName="coordinates1"
+          style="flex: 1"
+        ></dx-number-box>
+        <div style="width: 10px"></div>
+        <div style="margin-right: 5px">lng:</div>
+        <dx-number-box
+          formControlName="coordinates2"
+          style="flex: 1"
+        ></dx-number-box>
+      </div>
+    </form>
+  </div>
+  <dxi-toolbar-item
+    widget="dxButton"
+    toolbar="bottom"
+    location="after"
+    [options]="{
+      text: 'Save',
+      onClick: addTrip,
+      type: 'default',
+      disabled: !form.valid
+    }"
+  >
+  </dxi-toolbar-item>
+</dx-popup>

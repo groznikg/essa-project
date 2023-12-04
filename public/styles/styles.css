@@ -1,0 +1,253 @@
+/* Reset some default styles */
+body,
+h1,
+h2,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  margin: 10px 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  background-color: #28330d; /* Olive Green */
+  color: white;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo a {
+  text-decoration: none;
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin-right: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+}
+
+.user a {
+  text-decoration: none;
+  color: #6a4922; /* Pastel Brown */
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+main {
+  flex-grow: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.welcome {
+  background-color: #939786; /* Light Green */
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.welcome h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.search {
+  background-color: #939786; /* Light Green */
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.search h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+input[type="text"] {
+  width: 90%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #939786; /* Light Green */
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+#tripTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+#tripTable th,
+#tripTable td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ccc;
+}
+
+#tripTable th {
+  background-color: #28330d; /* Olive Green */
+  color: white;
+}
+
+#tripTable th:nth-child(4) {
+  background-color: #939786; /* Light Green */
+}
+
+#tripTable tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+button {
+  padding: 5px 10px;
+  border: none;
+  background-color: #939786; /* Light Green */
+  color: #28330d; /* Olive Green */
+  cursor: pointer;
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #69878a; /* Light Blue */
+}
+
+.button {
+  padding: 5px 10px;
+  border: none;
+  background-color: #939786; /* Light Green */
+  color: #28330d; /* Olive Green */
+  cursor: pointer;
+  border-radius: 3px;
+  text-decoration: none; /* Remove underline from anchor tags */
+  display: inline-block;
+  margin-right: 10px; /* Add some spacing between buttons */
+}
+
+.button:hover {
+  background-color: #69878a; /* Light Blue */
+}
+
+.trip-details {
+  background-color: #939786; /* Light Green */
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  flex: 1;
+}
+
+.profile-info {
+  background-color: #939786; /* Light Green */
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.profile-info a {
+  padding: 5px 10px;
+  border: none;
+  background-color: #939786; /* Light Green */
+  color: #28330d; /* Olive Green */
+  cursor: pointer;
+  border-radius: 3px;
+  text-decoration: none; /* Remove underline from anchor tags */
+  display: inline-block;
+  margin-right: 10px; /* Add some spacing between buttons */
+}
+.profile-info a:hover {
+  background-color: #69878a; /* Light Blue */
+}
+
+.fas {
+  margin-right: 5px;
+}
+
+.auth .registration {
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.auth .registration h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.auth .registration label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.auth .registration input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.auth .registration button {
+  background-color: #939786;
+  color: #28330d;
+  border: none;
+  border-radius: 3px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.auth .registration button:hover {
+  background-color: #69878a;
+}

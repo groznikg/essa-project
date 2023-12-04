@@ -1,0 +1,30 @@
+<section class="welcome p-5">
+  <h1 id="welcome-message">Welcome to MyFishingDiary</h1>
+  <p>Your fishing adventure starts here.</p>
+</section>
+
+<section class="search p-5">
+  <dx-chart id="home-page-chart" [dataSource]="dataSource">
+    <dxi-series [valueField]="'count'" argumentField="date" type="line">
+      <dxo-label [backgroundColor]="'none'" [visible]="true">
+        <dxo-connector [visible]="true"></dxo-connector>
+      </dxo-label>
+    </dxi-series>
+    <dxo-argument-axis
+      #argumentAxis
+      [valueMarginsEnabled]="true"
+      discreteAxisDivisionMode="crossLabels"
+      [title]="'date'"
+    >
+      <dxo-grid [visible]="true"></dxo-grid>
+    </dxo-argument-axis>
+    <dxi-value-axis [title]="'count'"> </dxi-value-axis>
+    <dxo-legend [visible]="false"> </dxo-legend>
+    <dxo-title
+      [text]="'Number of trips in the last months.'"
+      [textOverflow]="'ellipsis'"
+      [wordWrap]="'none'"
+    >
+    </dxo-title>
+  </dx-chart>
+</section>

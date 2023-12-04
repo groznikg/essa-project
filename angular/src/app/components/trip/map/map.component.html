@@ -1,0 +1,16 @@
+<div class="card mt-4">
+  <div class="card-header bg-light">
+    <h4 class="mt-1 mb-1">Location</h4>
+  </div>
+  <div class="card-body">
+    <div class="row-map">
+      <div class="col-4 overflow-auto" id="map-list"></div>
+      <div
+        class="map-container col-8"
+        leaflet
+        [leafletOptions]="options"
+        (leafletMapReady)="onMapReady($event)"
+      ></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+version: "3.5"
+services:
+  node-api:
+    container_name: lp-groznikg-app
+    ports:
+      - "3000:3000"
+    image: lp-groznikg-server
+    build: ./
+    environment:
+      - NODE_ENV=test
+    networks:
+      - lp-groznikg-network
+  lp-groznikg-mongo-db:
+    image: mongo
+    container_name: lp-groznikg-mongo-db
+    ports:
+      - "27017-27019:27017-27019"
+    networks:
+      - lp-groznikg-network
+networks:
+  lp-groznikg-network:
+    name: lp-groznikg-network
+    driver: bridge

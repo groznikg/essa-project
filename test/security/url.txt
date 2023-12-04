@@ -1,0 +1,6 @@
+https://localhost:3000/
+https://localhost:3000/login
+https://localhost:3000/register
+https://localhost:3000/trips
+https://localhost:3000/trips/653155e740e0aa5fb71b9936
+https://localhost:3000/fishing-groups

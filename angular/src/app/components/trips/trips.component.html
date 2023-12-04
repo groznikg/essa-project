@@ -1,0 +1,119 @@
+<dx-data-grid
+  class="trips-datagrid"
+  [dataSource]="trips"
+  [width]="'90%'"
+  [showBorders]="true"
+  [showColumnLines]="true"
+  [showRowLines]="true"
+>
+  <dxi-column dataField="name"></dxi-column>
+  <dxi-column
+    dataField="time"
+    dataType="datetime"
+    format="dd.MM.yyyy HH:mm"
+  ></dxi-column>
+  <dxi-column dataField="type"></dxi-column>
+  <dxi-column dataField="user"></dxi-column>
+  <dxi-column
+    dataField="actions"
+    [caption]="'Actions'"
+    cellTemplate="actionTemplate"
+    [width]="75"
+  >
+    <div
+      *dxTemplate="let data of 'actionTemplate'"
+      class="actions-template"
+      id="data-grid-row"
+    >
+      <dx-button [stylingMode]="'text'" (onClick)="openTrip(data)">
+        <div class="fas fa-external-link-alt"></div>
+      </dx-button>
+      <dx-button
+        *ngIf="canDeleteTrip(data)"
+        [stylingMode]="'text'"
+        (onClick)="openDeleteDialog(data)"
+        [disabled]="!isConnected()"
+      >
+        <div class="fas fa-trash"></div>
+      </dx-button>
+    </div>
+  </dxi-column>
+  <dxo-toolbar>
+    <dxi-item location="before" text="Trips"></dxi-item>
+    <dxi-item location="center">
+      <dx-text-box
+        placeholder="Enter address..."
+        [width]="300"
+        [showClearButton]="true"
+        (onValueChanged)="addressChange($event)"
+      >
+        <dxi-button name="clear"></dxi-button>
+        <dxi-button
+          name="search"
+          location="after"
+          [options]="searchButton"
+        ></dxi-button>
+      </dx-text-box>
+    </dxi-item>
+    <dxi-item location="after">
+      <dx-button
+        *ngIf="isLoggedIn()"
+        stylingMode="text"
+        icon="fas fa-plus"
+        hint="Add trip"
+        (onClick)="addTrip()"
+        [disabled]="!isConnected()"
+      ></dx-button>
+    </dxi-item>
+  </dxo-toolbar>
+</dx-data-grid>
+
+<div
+  class="d-flex m-auto justify-content-end align-items-center pt-2"
+  style="width: 90%"
+  *ngIf="totalPages > 1"
+>
+  <dx-button
+    [disabled]="currentPage === 0"
+    (onClick)="prevPage()"
+    stylingMode="text"
+  >
+    <i class="fas fa-chevron-left"></i>
+  </dx-button>
+  <div class="mx-2">{{ currentPage + 1 }} of {{ totalPages }}</div>
+  <dx-button
+    [disabled]="currentPage + 1 === totalPages"
+    (onClick)="nextPage()"
+    stylingMode="text"
+  >
+    <i class="fas fa-chevron-right"></i>
+  </dx-button>
+</div>
+
+<app-add-trip *ngIf="addTripBool" (closed)="closeAddTrip()"></app-add-trip>
+<dx-popup
+  [visible]="deleteDialog"
+  [title]="'Delete a trip'"
+  (onHiding)="closedPopup()"
+  [height]="'auto'"
+  [width]="500"
+>
+  <div style="text-align: center; margin-bottom: 20px">
+    <b style="font-size: large">Are you sure you want to delete this trip?</b>
+  </div>
+  <div style="display: flex; justify-content: end">
+    <dx-button
+      (onClick)="deleteTrip()"
+      class="action-button-delete"
+      text="Yes"
+      type="default"
+    ></dx-button>
+    <div style="width: 5px"></div>
+    <dx-button
+      (onClick)="closedPopup()"
+      class="action-button-delete"
+      text="Cancel"
+      type="default"
+    ></dx-button>
+  </div>
+</dx-popup>

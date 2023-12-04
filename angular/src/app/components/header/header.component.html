@@ -1,0 +1,57 @@
+<dx-toolbar class="header-toolbar">
+  <dxi-item location="before">
+    <dx-button stylingMode="text" (onClick)="homeClick()">
+      <div class="fas fa-fish"></div>
+      <div style="margin-left: 5px">MyFishingDiary</div>
+    </dx-button>
+  </dxi-item>
+
+  <dxi-item location="center">
+    <dx-button
+      stylingMode="text"
+      text="Home"
+      (onClick)="homeClick()"
+    ></dx-button>
+  </dxi-item>
+  <dxi-item location="center">
+    <dx-button
+      stylingMode="text"
+      text="Trips"
+      (onClick)="tripsClick()"
+    ></dx-button>
+  </dxi-item>
+  <dxi-item location="center">
+    <dx-button
+      stylingMode="text"
+      text="Fishing Groups"
+      (onClick)="fishingGroupsClick()"
+    ></dx-button>
+  </dxi-item>
+  <dxi-item location="center">
+    <dx-button stylingMode="text" text="DB" (onClick)="dbClick()"></dx-button>
+  </dxi-item>
+  <dxi-item location="after">
+    <div *ngIf="!isConnected(); else loginTemplate">
+      <dx-button stylingMode="text">
+        <i class="fas fa-exclamation-triangle"></i>
+      </dx-button>
+    </div>
+    <ng-template #loginTemplate>
+      <div *ngIf="isLoggedIn(); else login">
+        <dx-button
+          stylingMode="text"
+          [text]="getUser()?.name + ' (' + getUser()?.role + ')'"
+        ></dx-button>
+        <dx-button (onClick)="logout()" stylingMode="text">
+          <i class="fas fa-sign-out-alt"></i>
+        </dx-button>
+      </div>
+      <ng-template #login>
+        <dx-button
+          stylingMode="text"
+          text="Login"
+          (onClick)="loginClick()"
+        ></dx-button> </ng-template
+    ></ng-template>
+  </dxi-item>
+</dx-toolbar>

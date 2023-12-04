@@ -1,0 +1,32 @@
+<div class="row mt-5">
+  <div class="col-12 col-md-8 m-auto">
+    <p>
+      Not a member? Please
+      <a routerLink="/register" class="link-primary">register</a> first.
+    </p>
+    <form [formGroup]="loginForm" autocomplete="off">
+      <div *ngIf="formError" class="form-group">
+        <div class="alert alert-dark p-2 mt-4" role="alert">
+          <i class="fas fa-exclamation-triangle pe-2"></i>{{ formError }}
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email" class="form-label mb-1 mt-3">E-mail address</label>
+        <dx-text-box formControlName="email"></dx-text-box>
+      </div>
+      <div class="form-group">
+        <label for="password" class="form-label mb-1 mt-3">Password</label>
+        <dx-text-box formControlName="password" mode="password"></dx-text-box>
+      </div>
+      <div class="form-group mt-3">
+        <dx-button
+          [disabled]="!isConnected() || !loginForm.valid"
+          (onClick)="login()"
+          type="default"
+        >
+          Login
+        </dx-button>
+      </div>
+    </form>
+  </div>
+</div>

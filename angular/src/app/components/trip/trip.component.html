@@ -1,0 +1,41 @@
+<div class="row pb-5" *ngIf="trip">
+  <div [ngClass]="{ 'col-12': true, 'col-md-6': isConnected() }">
+    <app-trip-info
+      *ngIf="refresh"
+      [trip]="trip"
+      (reloadData)="reloadData($event)"
+    ></app-trip-info>
+    <app-fish-info
+      *ngIf="refresh"
+      [trip]="trip"
+      (reloadData)="reloadData($event)"
+    ></app-fish-info>
+  </div>
+  <div class="col-12 col-md-6" *ngIf="isConnected()">
+    <app-map
+      *ngIf="refresh && showMap && !noCoordinates"
+      [trip]="trip"
+    ></app-map>
+    <div class="card mt-4" *ngIf="noCoordinates">
+      <div class="card-header bg-light">
+        <h4 class="mt-1 mb-1">Location</h4>
+      </div>
+      <div class="card-body">
+        <div class="row-map">Coordinates are not set for this trip.</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-md-6">
+    <app-comments-info
+      *ngIf="refresh"
+      [trip]="trip"
+      (reloadData)="reloadData($event)"
+    ></app-comments-info>
+  </div>
+  <div class="col-12 col-md-6">
+    <app-trips-around
+      *ngIf="refresh && !noCoordinates"
+      [trip]="trip"
+    ></app-trips-around>
+  </div>
+</div>

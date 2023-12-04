@@ -1,0 +1,10 @@
+.trips-datagrid {
+  margin: auto;
+  margin-top: 15px;
+}
+
+::ng-deep .actions-template {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

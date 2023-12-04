@@ -1,0 +1,9 @@
+[
+  {
+    "id": "653157ba6ce8aa99001f5ba2",
+    "name": "Ljubljana fishing club",
+    "creator": "admin@admin.com",
+    "users": ["admin@admin.com", "user@user.com"],
+    "description": "We fish in Ljubljana!"
+  }
+]

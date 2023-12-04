@@ -1,0 +1,45 @@
+<div class="card mt-4">
+  <div class="card-header bg-light">
+    <h4 class="mt-1 mb-1">Other trips within 10km</h4>
+  </div>
+  <div class="card-body">
+    <div *ngIf="!tripsAround || tripsAround.length == 0">
+      No trips found within 10km.
+    </div>
+    <div class="row">
+      <div class="d-flex flex-row flex-nowrap overflow-auto">
+        <div
+          *ngFor="let trip of tripsAround"
+          class="card"
+          style="min-width: 300px; margin-right: 5px"
+        >
+          <div class="card-header bg-light">
+            <div class="d-flex justify-content-between align-items-center">
+              <h5
+                class="mt-1 mb-1"
+                style="max-width: 250px; text-overflow: ellipsis"
+              >
+                {{ trip.name }}
+              </h5>
+              <dx-button (onClick)="goToTrip(trip._id)">
+                <i class="fas fa-external-link-alt"></i>
+              </dx-button>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <h5>Type</h5>
+                <p>{{ trip.type }}</p>
+              </div>
+              <div class="col-12 col-md-6">
+                <h5>Time</h5>
+                <p>{{ trip.time | date : "mediumDate" }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

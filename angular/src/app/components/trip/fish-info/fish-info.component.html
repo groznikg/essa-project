@@ -1,0 +1,162 @@
+<div class="card mt-4">
+  <div class="card-header bg-light">
+    <div class="d-flex justify-content-between align-items-center">
+      <h4 class="mt-1 mb-1">Fish</h4>
+      <dx-button
+        *ngIf="canModifyFish()"
+        hint="Add Fish"
+        (onClick)="openAddFishPopup()"
+        [disabled]="!isConnected()"
+      >
+        <i class="fas fa-plus"></i>
+      </dx-button>
+    </div>
+  </div>
+  <div class="card-body">
+    <div *ngIf="!trip.fish || trip.fish.length === 0">
+      No fish caught on this trip.
+    </div>
+    <div class="row">
+      <div class="d-flex flex-row flex-nowrap overflow-auto">
+        <div
+          *ngFor="let fish of trip.fish | sortByWeight; let i = index"
+          class="card"
+          style="min-width: 250px; margin-right: 5px"
+        >
+          <div class="card-header bg-light">
+            <div class="d-flex justify-content-between align-items-center">
+              <h5 class="mt-1 mb-1">Fish #{{ i + 1 }}</h5>
+              <div class="d-flex">
+                <dx-button
+                  *ngIf="canModifyFish()"
+                  hint="Edit Fish"
+                  (onClick)="openEditFishPopup(fish)"
+                  [disabled]="!isConnected()"
+                >
+                  <i class="fas fa-edit"></i>
+                </dx-button>
+                <div style="width: 5px"></div>
+                <dx-button
+                  *ngIf="canModifyFish()"
+                  hint="Delete FIsh"
+                  (onClick)="openDeleteFishPopup(fish._id)"
+                  [disabled]="!isConnected()"
+                >
+                  <i class="fas fa-trash"></i>
+                </dx-button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <h5>Species</h5>
+                <p>{{ fish.species }}</p>
+              </div>
+              <div class="col-12 col-md-6" *ngIf="fish.weight">
+                <h5>Weight</h5>
+                <p>{{ fish.weight | addKg }}</p>
+              </div>
+              <div
+                class="col-12"
+                *ngIf="fish.description && fish.description.length > 0"
+              >
+                <h5>Description</h5>
+                <p>{{ fish.description }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<dx-popup
+  *ngIf="addFishBool"
+  [visible]="addFishBool"
+  [title]="'Add a fish'"
+  (onHiding)="closeAddFishPopup()"
+  [height]="'auto'"
+  [width]="500"
+>
+  <div *dxTemplate="let data of 'content'">
+    <form [formGroup]="addFishForm">
+      <div>Species</div>
+      <dx-text-box [required]="true" formControlName="species"></dx-text-box>
+      <div>Weight (kg)</div>
+      <dx-number-box formControlName="weight"></dx-number-box>
+      <div>Description</div>
+      <dx-text-area formControlName="description"></dx-text-area>
+    </form>
+  </div>
+  <dxi-toolbar-item
+    widget="dxButton"
+    toolbar="bottom"
+    location="after"
+    [options]="{
+      text: 'Save',
+      onClick: addFish,
+      type: 'default',
+      disabled: !addFishForm.valid
+    }"
+  >
+  </dxi-toolbar-item>
+</dx-popup>
+<dx-popup
+  [visible]="deleteFishBool"
+  [title]="'Delete a fish'"
+  (onHiding)="closeDeleteFishDialog()"
+  [height]="'auto'"
+  [width]="500"
+>
+  <div style="text-align: center; margin-bottom: 20px">
+    <b style="font-size: large">Are you sure you want to delete this fish?</b>
+  </div>
+  <div style="display: flex; justify-content: end">
+    <dx-button
+      (onClick)="deleteFish()"
+      class="action-button-delete"
+      text="Yes"
+      type="default"
+    ></dx-button>
+    <div style="width: 5px"></div>
+    <dx-button
+      (onClick)="closeDeleteFishDialog()"
+      class="action-button-delete"
+      text="Cancel"
+      type="default"
+    ></dx-button>
+  </div>
+</dx-popup>
+<dx-popup
+  *ngIf="editFishBool"
+  [visible]="editFishBool"
+  [title]="'Edit a fish'"
+  (onHiding)="closeEditFishPopup()"
+  [height]="'auto'"
+  [width]="500"
+>
+  <div *dxTemplate="let data of 'content'">
+    <form [formGroup]="editFishForm">
+      <div>Species</div>
+      <dx-text-box [required]="true" formControlName="species"></dx-text-box>
+      <div>Weight (kg)</div>
+      <dx-number-box formControlName="weight"></dx-number-box>
+      <div>Description</div>
+      <dx-text-area formControlName="description"></dx-text-area>
+    </form>
+  </div>
+  <dxi-toolbar-item
+    widget="dxButton"
+    toolbar="bottom"
+    location="after"
+    [options]="{
+      text: 'Save',
+      onClick: saveFish,
+      type: 'default',
+      disabled: !editFishForm.valid
+    }"
+  >
+  </dxi-toolbar-item>
+</dx-popup>

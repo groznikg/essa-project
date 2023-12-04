@@ -1,0 +1,23 @@
+.header-toolbar {
+  background-color: #337ab7;
+  padding: 0 5px;
+}
+
+.header-toolbar,
+::ng-deep .dx-toolbar-items-container {
+  height: 56px !important;
+  max-height: 15vh;
+}
+
+::ng-deep .header-toolbar .dx-button-mode-text {
+  color: white;
+}
+
+::ng-deep .header-toolbar * {
+  font-size: 20px;
+}
+
+::ng-deep .header-toolbar .dx-toolbar-center {
+  margin: 0 auto !important;
+  float: unset !important;
+}

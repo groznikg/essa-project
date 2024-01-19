@@ -51,3 +51,5 @@ jobs:
 
       - name: Push tags to the repository
         run: git push origin --tags
+          env:
+            GH_TOKEN: ${{ secrets.GH_TOKEN }}

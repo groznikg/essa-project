@@ -30,6 +30,12 @@ jobs:
     needs: build
 
     steps:
+      - name: Checkout repository again
+        uses: actions/checkout@v2
+
+      - name: Move into the repository directory
+        run: cd essa-project
+
       - name: Configure Git
         run: |
           git config --global user.email "github-actions@github.com"

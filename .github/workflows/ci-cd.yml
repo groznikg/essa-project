@@ -30,19 +30,7 @@ jobs:
     needs: build
 
     steps:
-      - name: Checkout repository again
-        uses: actions/checkout@v2
-
-      - name: Move into the repository directory
-        run: cd essa-project
-
-      - name: Configure Git
-        run: |
-          git config --global user.email "github-actions@github.com"
-          git config --global user.name "GitHub Actions"
-
-      - name: Tag the commit
-        run: git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
-
-      - name: Push tags to the repository
-        run: git push origin --tags
+      - uses: actions/checkout@v2
+      - uses: Klemensas/action-autotag@stable
+        with:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"

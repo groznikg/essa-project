@@ -10,6 +10,16 @@ services:
       - NODE_ENV=test
     networks:
       - lp-groznikg-network
+    volumes:
+      - app_data:/app/data
+  angular-app:
+    container_name: angular-app
+    ports:
+      - "8081:80"
+    image: lp-groznikg-angular
+    build: ./angular/
+    networks:
+      - lp-groznikg-network
   lp-groznikg-mongo-db:
     image: mongo
     container_name: lp-groznikg-mongo-db
@@ -17,7 +27,23 @@ services:
       - "27017-27019:27017-27019"
     networks:
       - lp-groznikg-network
+    volumes:
+      - mongo_data:/data/db
+  reverse-proxy:
+    image: nginx
+    container_name: reverse-proxy
+    ports:
+      - "8080:80"
+    networks:
+      - lp-groznikg-network
+    depends_on:
+      - angular-app
+      - lp-groznikg-app
+      - lp-groznikg-mongo-db
 networks:
   lp-groznikg-network:
     name: lp-groznikg-network
     driver: bridge
+volumes:
+  app_data:
+  mongo_data:

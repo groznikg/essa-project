@@ -92,3 +92,10 @@ GOOGLE_API_KEY="GOOGLE_API_KEY"
 
 ## Obvladovanje večje količine podatkov
 - V tabeli na url /trips
+
+## Lighthouse poročilo
+Nahaja se v datoteki [Report](/lighthouse/report.html).
+Dobljen rezultat je primerljiv s tistim, ki smo ga dobili na predavanjih, le da je performance malo nižji, saj sem aplikacijo testiral na slabšem računalniku in je bil load time malo počasnejši.
+
+## OWASP ZAP poročilo
+Oba poročila se nahajata v mapi [OWASP ZAP poročila](/test/security). Med prvim in drugim poročilom je kar veliko izboljšav a zaradi stiske s časom mi ni uspelo odpraviti vsega.

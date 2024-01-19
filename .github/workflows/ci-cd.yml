@@ -31,8 +31,13 @@ jobs:
 
     steps:
       - name: Set up Git
-        run: |
-          git config --global user.email "github-actions@github.com"
-          git config --global user.name "GitHub Actions"
-          git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
-          git push origin --tags
+        uses: actions/setup-git@v2
+        with:
+          user.email: "github-actions@github.com"
+          user.name: "GitHub Actions"
+
+      - name: Tag the commit
+        run: git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
+
+      - name: Push tags to the repository
+        run: git push origin --tags

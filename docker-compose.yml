@@ -10,8 +10,6 @@ services:
       - NODE_ENV=test
     networks:
       - lp-groznikg-network
-    volumes:
-      - app_data:/app/data
   angular-app:
     container_name: angular-app
     ports:
@@ -45,5 +43,4 @@ networks:
     name: lp-groznikg-network
     driver: bridge
 volumes:
-  app_data:
   mongo_data:

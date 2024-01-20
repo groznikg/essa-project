@@ -9,11 +9,11 @@ const [major, minor, patch] = currentTag.slice(1).split(".").map(Number);
 
 if (isNaN(major) || isNaN(minor) || isNaN(patch)) {
   console.error(
-    "Invalid tag format. Tags should follow Semantic Versioning (e.g., v1.2.3)."
+    "Invalid tag format. Tags should follow Semantic Versioning (e.g., 1.2.3)."
   );
   process.exit(1);
 }
 
-const newTag = `v${major}.${minor}.${patch + 1}`;
+const newTag = `${major}.${minor}.${patch + 1}`;
 
 console.log(newTag);

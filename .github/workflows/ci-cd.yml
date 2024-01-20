@@ -45,7 +45,7 @@ jobs:
 
       - name: Get latest tag
         id: get_latest_tag
-        run: echo ::set-output name=latest_tag::$(git tag -l)
+        run: echo ::set-output name=latest_tag::$(git tag -l --sort=-v:refname | head -n 1)
 
       - name: Increment version
         id: increment_version

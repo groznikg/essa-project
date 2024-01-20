@@ -46,8 +46,17 @@ jobs:
         id: bump_version
         run: echo ::set-output name=new_version::$(node -e "console.log('${{ steps.get_latest_tag.outputs.latest_tag }}'.replace(/^v/, '').split('.').map(Number).slice(0, 2).concat(Number('${{ steps.get_latest_tag.outputs.latest_tag }}'.replace(/^v/, '').split('.')[2]) + 1).join('.'))")
 
-      - name: Tag the commit
-        run: git tag ${{ steps.bump_version.outputs.new_version }}
+      - name: Check if tag exists
+        id: check_tag
+        run: git tag -l ${{ steps.bump_version.outputs.new_version }}
+
+      - name: Tag the commit (if tag doesn't exist)
+        run: |
+          if [ -z "${{ steps.check_tag.outputs.check_tag }}" ]; then
+            git tag ${{ steps.bump_version.outputs.new_version }}
+          else
+            echo "Tag already exists, skipping."
+          fi
 
       - name: Push tags to the repository
         run: git push origin --tags

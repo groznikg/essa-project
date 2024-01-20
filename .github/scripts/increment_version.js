@@ -13,7 +13,11 @@ if (isNaN(major) || isNaN(minor) || isNaN(patch)) {
   );
   process.exit(1);
 }
-
-const newTag = `${major}.${minor}.${patch + 1}`;
+let newTag;
+if (patch === 9) {
+  newTag = `${major}.${minor + 1}.0`;
+} else {
+  newTag = `${major}.${minor}.${patch + 1}`;
+}
 
 console.log(newTag);

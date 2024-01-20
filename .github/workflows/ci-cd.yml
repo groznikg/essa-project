@@ -40,7 +40,7 @@ jobs:
 
       - name: Get latest tag
         id: get_latest_tag
-        run: echo ::set-output name=latest_tag::$(git describe --abbrev=0 --tags || echo "v0.0.0")
+        run: echo ::set-output name=latest_tag::$(git describe --abbrev=0 --tags || echo "0.0.0")
 
       - name: Increment version
         id: increment_version

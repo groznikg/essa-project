@@ -99,3 +99,9 @@ Dobljen rezultat je primerljiv s tistim, ki smo ga dobili na predavanjih, le da 
 
 ## OWASP ZAP poročilo
 Oba poročila se nahajata v mapi [OWASP ZAP poročila](/test/security). Med prvim in drugim poročilom je kar veliko izboljšav a zaradi stiske s časom mi ni uspelo odpraviti vsega.
+
+## Docker compose
+The docker compose has 4 services: API, Front End, Data base and Reverse proxy. THe API and Front End are build using custom dockerfile, the DB and reverse proxy are built from images. The DB also has a volume for storing of data.
+
+## CI CD
+The CI CD is done with GitHub actions that builds the app and creates a tag.

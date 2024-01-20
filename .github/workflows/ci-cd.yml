@@ -35,10 +35,13 @@ jobs:
 
       - name: Set up Git
         run: |
+          VERSION=${GITHUB_REF#refs/tags/}
+          MAJOR=${VERSION%%.*}
           git config --global user.email "github-actions@github.com"
           git config --global user.name "GitHub Actions"
           git fetch --tags
-          echo "${GITHUB_REF#refs/tags/}"
+          echo "${VERSION}"
+          echo "${MAJOR}"
 
       - name: Get latest tag
         id: get_latest_tag

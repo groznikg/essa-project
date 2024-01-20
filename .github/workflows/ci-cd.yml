@@ -38,7 +38,7 @@ jobs:
           git config --global user.email "github-actions@github.com"
           git config --global user.name "GitHub Actions"
           git fetch --tags
-          echo "${GITHUB_REF##*/}"
+          echo "${GITHUB_REF#refs/tags/}"
 
       - name: Get latest tag
         id: get_latest_tag
